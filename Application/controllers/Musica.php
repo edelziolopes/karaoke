@@ -6,7 +6,10 @@ class Musica extends Controller
 {
   public function index()
   {
-    $this->view('musica/index');
+    $Generos = $this->model('Generos');
+    $data = $Generos::listarTudo();
+
+    $this->view('musica/index', ['generos' => $data]);
   }
 
 }
