@@ -33,7 +33,7 @@ class Musicas
   public static function listarTudo()
   {
       $conn = new Database();
-      $result = $conn->executeQuery('SELECT * FROM tb_generos');
+      $result = $conn->executeQuery('SELECT * FROM tb_musicas');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 

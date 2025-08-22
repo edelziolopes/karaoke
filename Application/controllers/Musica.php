@@ -7,9 +7,15 @@ class Musica extends Controller
   public function index()
   {
     $Generos = $this->model('Generos');
-    $data = $Generos::listarTudo();
+    $todosGeneros = $Generos::listarTudo();
 
-    $this->view('musica/index', ['generos' => $data]);
+    $Musicas = $this->model('Musicas');
+    $todasMusicas = $Musicas::listarTudo();
+
+    $this->view('musica/index', [
+      'generos' => $todosGeneros,
+      'musicas' => $todasMusicas
+    ]);
   }
 
     public function salvar()

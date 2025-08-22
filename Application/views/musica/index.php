@@ -50,11 +50,11 @@
       <?php foreach ($data['musicas'] as $musica) { ?>
       <tr>
         <td><?= $musica['id'] ?></td>
-        <td><?= $musica['genero_nome'] ?></td>
+        <td><?= $musica['id_genero'] ?></td>
         <td><?= $musica['nome'] ?></td>
         <td>
             <?php if (!empty($musica['imagem'])) { ?>
-                <img src="/uploads/<?= $musica['imagem'] ?>" alt="<?= $musica['nome'] ?>" style="width:60px; height:60px; object-fit:cover;">
+                <img src="<?= $musica['imagem'] ?>" alt="<?= $musica['nome'] ?>" style="width:60px; height:60px; object-fit:cover;">
             <?php } ?>
         </td>
         <td><?= $musica['cantor'] ?></td>
