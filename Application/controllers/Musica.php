@@ -12,4 +12,16 @@ class Musica extends Controller
     $this->view('musica/index', ['generos' => $data]);
   }
 
+    public function salvar()
+  {
+    $genero = $_POST['txt_genero'];
+    $nome = $_POST['txt_nome'];
+    $imagem = $_POST['txt_imagem'];
+    $cantor = $_POST['txt_cantor'];
+
+    $Musicas = $this->model('Musicas');
+    $Musicas::salvar($genero, $nome, $imagem, $cantor);
+    $this->redirect('musica/index');
+  } 
+
 }

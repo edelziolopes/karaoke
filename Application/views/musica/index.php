@@ -2,10 +2,10 @@
 <div class="content">
 
 <h2>Cadastro de Músicas</h2>
-<form action="/musica/create" method="POST" enctype="multipart/form-data">
+<form action="/musica/salvar" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="id_genero" class="form-label"><i class="fas fa-theater-masks"></i> Gênero</label>
-        <select class="form-control" id="id_genero" name="id_genero" required>
+        <select class="form-control" id="id_genero" name="txt_genero" required>
             <option value="">Selecione um gênero</option>
             <?php foreach ($data['generos'] as $genero) { ?>
                 <option value="<?= $genero['id'] ?>"><?= $genero['nome'] ?></option>
@@ -15,17 +15,17 @@
 
     <div class="mb-3">
         <label for="nome" class="form-label"><i class="fas fa-music"></i> Nome da Música</label>
-        <input type="text" class="form-control" id="nome" name="nome" required>
+        <input type="text" class="form-control" id="nome" name="txt_nome" required>
     </div>
 
     <div class="mb-3">
         <label for="imagem" class="form-label"><i class="fas fa-image"></i> Imagem</label>
-        <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*" required>
+        <input type="text" class="form-control" id="imagem" name="txt_imagem" accept="image/*" required>
     </div>
 
     <div class="mb-3">
         <label for="cantor" class="form-label"><i class="fas fa-user"></i> Cantor</label>
-        <input type="text" class="form-control" id="cantor" name="cantor" required>
+        <input type="text" class="form-control" id="cantor" name="txt_cantor" required>
     </div>
 
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>
