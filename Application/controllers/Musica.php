@@ -29,5 +29,11 @@ class Musica extends Controller
     $Musicas::salvar($genero, $nome, $imagem, $cantor);
     $this->redirect('musica/index');
   } 
+  public function excluir($id)
+  {
+    $Musicas = $this->model('Musicas');
+    $Musicas::excluir($id);
+    $this->redirect('musica/index');
+  }  
 
 }

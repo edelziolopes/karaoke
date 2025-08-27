@@ -26,7 +26,7 @@ class Musicas
   public static function excluir($id)
   {
       $conn = new Database();
-      $result = $conn->executeQuery('DELETE FROM tb_generos WHERE id = :ID', array(':ID' => $id));
+      $result = $conn->executeQuery('DELETE FROM tb_musicas WHERE id = :ID', array(':ID' => $id));
       return $result->rowCount();
   }
 

@@ -66,7 +66,7 @@
                   data-cantor="<?= $musica['cantor'] ?>">
             <i class="fas fa-edit"></i> Editar
           </button>
-          <a href="/musica/delete/<?= $musica['id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a>
+          <a href="/musica/excluir/<?= $musica['id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a>
         </td>
       </tr>
       <?php } ?>

@@ -2,20 +2,20 @@
 <div class="content">
 
 <h2>Cadastro de Usuários</h2>
-<form action="/usuario/create" method="POST" enctype="multipart/form-data">
+<form action="/usuario/salvar" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="nome" class="form-label"><i class="fas fa-user"></i> Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome" required>
+        <input type="text" class="form-control" id="nome" name="txt_nome" required>
     </div>
 
     <div class="mb-3">
         <label for="turma" class="form-label"><i class="fas fa-school"></i> Turma</label>
-        <input type="text" class="form-control" id="turma" name="turma" required>
+        <input type="text" class="form-control" id="turma" name="txt_turma" required>
     </div>
 
     <div class="mb-3">
         <label for="foto" class="form-label"><i class="fas fa-image"></i> Foto</label>
-        <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
+        <input type="text" class="form-control" id="foto" name="txt_foto" accept="image/*" required>
     </div>
 
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>

@@ -9,7 +9,9 @@ class Home extends Controller
   */
   public function index()
   {
-    $this->view('home/index');
+    $Generos = $this->model('Generos');
+    $data = $Generos::listarTudo();
+    $this->view('home/index', ['generos' => $data]);
   }
 
 }
