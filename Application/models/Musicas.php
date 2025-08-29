@@ -36,5 +36,11 @@ class Musicas
       $result = $conn->executeQuery('SELECT * FROM tb_musicas');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+  public static function listarGenero($id)
+  {
+      $conn = new Database();
+      $result = $conn->executeQuery('SELECT * FROM tb_musicas WHERE id_genero = :ID', array(':ID' => $id));
+      return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 
 }

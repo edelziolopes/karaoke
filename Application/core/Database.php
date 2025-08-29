@@ -6,10 +6,10 @@ use PDO;
 class Database extends PDO
 {
   // configuração do banco de dados
-  private $DB_NAME = 'karaoke';
-  private $DB_USER = 'root';
-  private $DB_PASSWORD = '';
-  private $DB_HOST = '127.0.0.1';
+  private $DB_NAME = 'u344105464_karaoke';
+  private $DB_USER = 'u344105464_terceirosi';
+  private $DB_PASSWORD = 'Ind-2025';
+  private $DB_HOST = 'srv1664.hstgr.io';
   private $DB_PORT = 3306;
 
   // armazena a conexão
