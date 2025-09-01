@@ -43,7 +43,7 @@
         <td><?= $usuario['turma'] ?></td>
         <td>
             <?php if (!empty($usuario['foto'])) { ?>
-                <img src="/uploads/<?= $usuario['foto'] ?>" alt="<?= $usuario['nome'] ?>" style="width:60px; height:60px; object-fit:cover;">
+                <img src="<?= $usuario['foto'] ?>" alt="<?= $usuario['nome'] ?>" style="width:60px; height:60px; object-fit:cover;">
             <?php } ?>
         </td>
         <td>
