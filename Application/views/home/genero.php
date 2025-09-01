@@ -19,12 +19,16 @@
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">Escolha sua Música</h2>
-    <div id="musicaContainer" class="musica-card-container">
+    <div id="musicaContainer" class="row musica-card-container g-4">
         <?php foreach ($data['musicas'] as $musica) { ?>
-            <div class="musica-card" style="display: none;">
-                <img src="<?= $musica['imagem'] ?>" alt="<?= $musica['nome'] ?>" height="200" class="mb-2">
-                <h5><?= $musica['nome'] ?></h5>
-                <p>Artista: <?= $musica['cantor'] ?></p>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="musica-card card h-100 shadow-sm text-center" style="display: none;">
+                    <img src="<?= $musica['imagem'] ?>" alt="<?= $musica['nome'] ?>" class="card-img-top object-fit-cover" style="height: 200px; width: 100%; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $musica['nome'] ?></h5>
+                        <p class="card-text text-muted mb-0">Artista: <?= $musica['cantor'] ?></p>
+                    </div>
+                </div>
             </div>
         <?php } ?>
     </div>
