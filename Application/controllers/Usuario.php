@@ -10,7 +10,6 @@ class Usuario extends Controller
     $data = $Usuarios::listarTudo();
     $this->view('usuario/index', ['usuarios' => $data]);
   }
-
   public function salvar()
   {
     $nome = $_POST['txt_nome'];
@@ -28,5 +27,25 @@ class Usuario extends Controller
       $Usuarios::excluir($id);
       $this->redirect('usuario/index');
     }  
+  public function login()
+  {
+    $usuario = $_POST['txt_usuario'] ?? '';
+    $senha = $_POST['txt_senha'] ?? '';
+
+    $Usuarios = $this->model('Usuarios');
+    $user = $Usuarios::verificarLogin($usuario, $senha);
+
+    if ($user) {
+      setcookie('usuario', $user['nome'], time() + 3600, '/');
+      $this->redirect('home');
+    } else {
+      $this->redirect('usuario/login');
+    }
+  }
+  public function sair()
+  {
+    setcookie('usuario', '', time() - 3600, '/');
+    $this->redirect('home');
+  }  
 
 }
