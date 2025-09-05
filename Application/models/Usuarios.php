@@ -6,14 +6,16 @@ use Application\core\Database;
 use PDO;
 class Usuarios
 {
-    public static function salvar($nome, $turma, $foto)
+    public static function salvar($nome, $email, $senha, $turma, $foto)
     {
         $conn = new Database();
         $result = $conn->executeQuery(
-            'INSERT INTO tb_usuarios (nome, turma, foto)
-            VALUES (:NOME, :TURMA, :FOTO)',
+            'INSERT INTO tb_usuarios (nome, email, senha, turma, foto)
+            VALUES (:NOME, :EMAIL, :SENHA, :TURMA, :FOTO)',
             array(
             ':NOME' => $nome,
+            ':EMAIL' => $email,
+            ':SENHA' => password_hash($senha, PASSWORD_DEFAULT),
             ':TURMA' => $turma,
             ':FOTO' => $foto
             )

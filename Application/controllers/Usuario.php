@@ -13,11 +13,13 @@ class Usuario extends Controller
   public function salvar()
   {
     $nome = $_POST['txt_nome'];
+    $email = $_POST['txt_email'];
+    $senha = $_POST['txt_senha'];
     $turma = $_POST['txt_turma'];
     $foto = $_POST['txt_foto'];
 
     $Usuarios = $this->model('Usuarios');
-    $Usuarios::salvar($nome, $turma, $foto);
+    $Usuarios::salvar($nome, $email, $senha, $turma, $foto);
     $this->redirect('usuario/index');
   } 
   
@@ -47,5 +49,9 @@ class Usuario extends Controller
     setcookie('usuario', '', time() - 3600, '/');
     $this->redirect('home');
   }  
+  public function cadastro()
+  {
+    $this->view('usuario/cadastro');
+  }
 
 }

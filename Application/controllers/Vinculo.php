@@ -6,7 +6,20 @@ class Vinculo extends Controller
 {
   public function index()
   {
-    $this->view('vinculo/index');
+    $Usuarios = $this->model('Usuarios');
+    $dataUsuarios = $Usuarios::listarTudo();
+    
+    $Musicas = $this->model('Musicas');
+    $dataMusicas = $Musicas::listarTudo();
+    
+    $Vinculos = $this->model('Vinculos');
+    $dataVinculos = $Vinculos::listarTudo();
+
+    $this->view('vinculo/index', [
+      'usuarios' => $dataUsuarios,
+      'musicas' => $dataMusicas,
+      'vinculos' => $dataVinculos
+    ]);
   }
 
 }
