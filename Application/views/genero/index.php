@@ -7,6 +7,10 @@
         <label for="nome" class="form-label"><i class="fas fa-theater-masks"></i> Nome</label>
         <input type="text" class="form-control" id="nome" name="txt_nome" required>
     </div>
+    <div class="mb-3">
+        <label for="nome" class="form-label"><i class="fas fa-theater-masks"></i> Imagem</label>
+        <input type="text" class="form-control" id="nome" name="txt_imagem" required>
+    </div>
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>
 </form>
 
@@ -19,6 +23,7 @@
       <tr>
         <th scope="col"><i class="fas fa-id-badge"></i> ID</th>
         <th scope="col"><i class="fas fa-theater-masks"></i> Nome</th>
+        <th scope="col"><i class="fas fa-theater-masks"></i> Imagem</th>
         <th scope="col"><i class="fas fa-cog"></i> Ações</th>
       </tr> 
     </thead>
@@ -27,6 +32,7 @@
       <tr>
         <td><?= $genero['id'] ?></td>
         <td><?= $genero['nome'] ?></td>
+        <td><img src="<?= $genero['imagem'] ?>" height="40px"></td>
         <td>
           <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $genero['id'] ?>" data-nome="<?= $genero['nome'] ?>"><i class="fas fa-edit"></i> Editar</button>
           <a href="/genero/excluir/<?= $genero['id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a>

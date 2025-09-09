@@ -14,9 +14,10 @@ class Genero extends Controller
   public function salvar()
   {
     $nome = $_POST['txt_nome'];
+    $imagem = $_POST['txt_imagem'];
 
     $Generos = $this->model('Generos');
-    $Generos::salvar($nome);
+    $Generos::salvar($nome, $imagem);
     $this->redirect('genero/index');
   } 
   

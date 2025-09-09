@@ -34,6 +34,6 @@ class Musica extends Controller
     $Musicas = $this->model('Musicas');
     $Musicas::excluir($id);
     $this->redirect('musica/index');
-  }  
+  }
 
 }

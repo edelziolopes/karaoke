@@ -1,119 +1,112 @@
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Escolha seu Gênero Musical</h2>
-    <div id="genreContainer" class="genre-card-container">
-        <?php foreach ($data['generos'] as $genero) { ?>
-            <div class="genre-circle genre-card" data-id="<?= $genero['id'] ?>">
-                <img src="<?= $genero['imagem'] ?>" alt="<?= $genero['nome'] ?>" class="genre-image">
-                <div class="genre-overlay">
-                    <a href="/home/genero/<?= $genero['id'] ?>" class="genre-link"><?= $genero['nome'] ?></a>
-                </div>
-            </div>
-        <?php } ?>
+<div class="bg-gray-900 text-white p-6 md:p-8 font-sans">
+  <!-- Título da seção de Gêneros -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-100">Gêneros</h2>
+    <!-- Botões de navegação do carrossel -->
+    <div class="flex space-x-2">
+      <button id="scroll-left-btn" class="p-2 rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <button id="scroll-right-btn" class="p-2 rounded-full bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+        </svg>
+      </button>
     </div>
+  </div>
 
-    <div class="d-flex justify-content-center mt-4">
-        <button id="prevBtn" class="btn btn-outline-secondary" disabled>Anterior</button>
-        <button id="nextBtn" class="btn btn-primary">Próximo</button>
-    </div>
-</div>
+  <!-- Carrossel deslizante de Gêneros -->
+  <div id="genres-carousel" class="flex overflow-x-auto gap-4 p-2 -m-2 scrollbar-hide scroll-smooth">
+    <?php foreach ($data['generos'] as $genero) { ?>
+      <!-- Card do Gênero -->
+      <a href="/home/genero/<?= $genero['id'] ?>#<?= $genero['id'] ?>" class="flex-shrink-0 w-32 md:w-40 group cursor-pointer" id="genre-<?= $genero['id'] ?>">
+        <div class="relative w-full h-32 md:h-40 overflow-hidden rounded-full shadow-lg">
+          <img src="<?= $genero['imagem'] ?>" alt="Imagem de <?= $genero['nome'] ?>" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 rounded-full ring-2 ring-inset ring-gray-600 group-hover:ring-white transition-colors duration-200"></div>
+        </div>
+        <div class="mt-4 text-center">
+          <h3 class="text-lg font-semibold text-gray-200 group-hover:text-white transition-colors duration-200 truncate">
+            <?= $genero['nome'] ?>
+          </h3>
+          <p class="text-sm text-gray-400">Gênero</p>
+        </div>
+      </a>
+    <?php } ?>
+  </div>
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Escolha sua Música</h2>
-    <div id="musicaContainer" class="row musica-card-container g-4">
-        <?php foreach ($data['musicas'] as $musica) { ?>
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="musica-card card h-100 shadow-sm text-center" style="display: none;">
-                    <img src="<?= $musica['imagem'] ?>" alt="<?= $musica['nome'] ?>" class="card-img-top object-fit-cover" style="height: 200px; width: 100%; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $musica['nome'] ?></h5>
-                        <p class="card-text text-muted mb-0">Artista: <?= $musica['cantor'] ?></p>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
-    </div>
-    <div class="d-flex justify-content-center mt-4">
-        <button id="prevMusicaBtn" class="btn btn-outline-secondary" disabled>Anterior</button>
-        <button id="nextMusicaBtn" class="btn btn-primary">Próximo</button>
-    </div>
-</div>
+  <!-- Título da seção de Músicas -->
+  <div class="mt-8 mb-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-100">Músicas</h2>
+  </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const musicaCards = document.querySelectorAll('.musica-card');
-        const prevMusicaBtn = document.getElementById('prevMusicaBtn');
-        const nextMusicaBtn = document.getElementById('nextMusicaBtn');
-        const musicasPerPage = 4;
-        let musicaPage = 0;
+  <!-- Listagem de Músicas -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <?php foreach ($data['musicas'] as $musica) { ?>
+      <!-- Card da Música -->
+      <div class="bg-gray-800 rounded-lg p-4 flex items-center space-x-4">
+        <div class="flex-shrink-0">
+          <img src="<?= $musica['imagem'] ?>" alt="<?= $musica['nome'] ?>" class="w-16 h-16 rounded-lg object-cover shadow-md">
+        </div>
+        <div class="flex-grow">
+          <h3 class="text-lg font-semibold text-gray-100 truncate">
+            <?= $musica['nome'] ?>
+          </h3>
+          <p class="text-sm text-gray-400 truncate">
+            <?= $musica['cantor'] ?>
+          </p>
+        </div>
+        <!-- Botão Cantar com Tooltip -->
+        <a href="/home/musica/<?= $musica['id'] ?>" class="relative group">
+          <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs rounded-lg px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            Cantar
+          </span>
+          <div class="flex-shrink-0 p-2 bg-green-500 rounded-full text-white hover:bg-green-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-green-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
+            </svg>
+          </div>
+        </a>
+      </div>
+    <?php } ?>
+  </div>
 
-        function showMusicas(page) {
-            const start = page * musicasPerPage;
-            const end = start + musicasPerPage;
+  <!-- Lógica JavaScript para navegação e rolagem -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.getElementById('genres-carousel');
+      const scrollLeftBtn = document.getElementById('scroll-left-btn');
+      const scrollRightBtn = document.getElementById('scroll-right-btn');
+      const scrollAmount = 300; // Ajuste este valor para controlar a quantidade de rolagem
 
-            musicaCards.forEach(card => {
-                card.style.display = 'none';
-            });
+      scrollRightBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
 
-            for (let i = start; i < end && i < musicaCards.length; i++) {
-                musicaCards[i].style.display = 'block';
-            }
-
-            prevMusicaBtn.disabled = (musicaPage === 0);
-            nextMusicaBtn.disabled = (end >= musicaCards.length);
+      scrollLeftBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      
+      // Rola o carrossel para a posição do gênero na URL, se existir
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const targetElement = document.getElementById(`genre-${hash}`);
+        if (targetElement) {
+          carousel.scrollLeft = targetElement.offsetLeft - (carousel.offsetWidth / 2) + (targetElement.offsetWidth / 2);
         }
-
-        nextMusicaBtn.addEventListener('click', function() {
-            musicaPage++;
-            showMusicas(musicaPage);
-        });
-
-        prevMusicaBtn.addEventListener('click', function() {
-            musicaPage--;
-            showMusicas(musicaPage);
-        });
-
-        showMusicas(musicaPage);
+      }
     });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const cards = document.querySelectorAll('.genre-card');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const cardsPerPage = 4;
-        let currentPage = 0;
-
-        function showCards(page) {
-            const start = page * cardsPerPage;
-            const end = start + cardsPerPage;
-
-            // Esconde todos os cards primeiro
-            cards.forEach(card => {
-                card.style.display = 'none';
-            });
-
-            // Mostra os cards da página atual
-            for (let i = start; i < end && i < cards.length; i++) {
-                cards[i].style.display = 'block';
-            }
-
-            // Atualiza o estado dos botões
-            prevBtn.disabled = (currentPage === 0);
-            nextBtn.disabled = (end >= cards.length);
-        }
-
-        nextBtn.addEventListener('click', function() {
-            currentPage++;
-            showCards(currentPage);
-        });
-
-        prevBtn.addEventListener('click', function() {
-            currentPage--;
-            showCards(currentPage);
-        });
-
-        // Mostra a primeira página ao carregar a página
-        showCards(currentPage);
-    });
-</script>
+  </script>
+  
+  <!-- Estilos para esconder a barra de rolagem, compatível com navegadores modernos -->
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+</div>

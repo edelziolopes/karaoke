@@ -6,12 +6,16 @@ use Application\core\Database;
 use PDO;
 class Generos
 {
-  public static function salvar(string $nome)
+  public static function salvar($nome, $imagem)
   {
       $conn = new Database();
       $result = $conn->executeQuery(
-          'INSERT INTO tb_generos (nome) VALUES (:NOME)',
-          array(':NOME' => $nome)
+          'INSERT INTO tb_generos (nome, imagem) 
+           VALUES (:NOME, :IMAGEM)',
+          array(
+            ':NOME' => $nome,
+            ':IMAGEM' => $imagem,
+            )
       );
       return $result->rowCount();
   }
