@@ -4,9 +4,7 @@ use Application\core\Controller;
 
 class Home extends Controller
 {
-  /*
-  * chama a view index.php do  /home   ou somente   /
-  */
+
   public function index()
   {
     $Generos = $this->model('Generos');
@@ -25,6 +23,14 @@ class Home extends Controller
       'generos' => $dataGeneros,
       'musicas' => $dataMusicas      
     ]);
+  }
+  public function cadastro()
+  {
+    $this->view('/home/cadastro');
+  }
+  public function login()
+  {
+    $this->view('/home/login');
   }
 
 }
