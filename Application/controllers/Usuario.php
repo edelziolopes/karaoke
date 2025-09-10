@@ -30,7 +30,7 @@ class Usuario extends Controller
     $email = $_POST['txt_email'];
     $senha = $_POST['txt_senha'];
     $turma = $_POST['txt_turma'];
-    $foto = $FILES['txt_foto'];
+    $foto = $_FILES['txt_foto'];
         
     $timestamp = date('YmdHis');
     $fotoName = $timestamp . '.jpg';

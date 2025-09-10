@@ -34,7 +34,7 @@
         <ul class="flex space-x-6">
           <li><a href="/home" class="hover:text-yellow-400 flex items-center gap-1"><i class="fas fa-home"></i> Home</a></li>
           <li><a href="/home/cadastro" class="hover:text-yellow-400 flex items-center gap-1"><i class="fas fa-user-plus"></i> Cadastro</a></li>
-          <li><a href="/login" class="hover:text-yellow-400 flex items-center gap-1"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+          <li><a href="/home/login" class="hover:text-yellow-400 flex items-center gap-1"><i class="fas fa-sign-in-alt"></i> Login</a></li>
 
           <!-- ADM Dropdown -->
           <li class="relative group">

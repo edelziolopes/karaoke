@@ -1,10 +1,10 @@
-<div class="flex flex-col items-center justify-center min-h-screen bg-black text-white">
+<div class="flex flex-col items-center justify-center bg-black text-white">
     <div class="w-full max-w-lg mx-auto p-4 md:p-8">
         <div class="bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
             <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">
                 <i class="fas fa-user-plus mr-2"></i> Cadastro de Usuário
             </h3>
-            <form action="/usuario/salvar" method="post" enctype="multipart/form-data">
+            <form action="/usuario/cadastro" method="post" enctype="multipart/form-data">
                 <div class="mb-4">
                     <label for="nome" class="block text-sm font-semibold mb-2">
                         <i class="fas fa-user mr-2"></i> Nome:
