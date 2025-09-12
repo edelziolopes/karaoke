@@ -1,10 +1,20 @@
 <div class="flex flex-col items-center justify-center bg-black text-white">
     <div class="w-full max-w-md mx-auto p-4 md:p-8">
-        <div class="bg-gray-800 rounded-xl shadow-lg md:p-8">
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
             <h3 class="text-3xl font-bold mb-6 text-center text-yellow-400">
                 <i class="fas fa-sign-in-alt mr-2"></i> Login
             </h3>
-            <form action="/usuario/login" method="post">
+
+            <?php if (isset($data['erro'])): ?>
+            <div class="p-4 mb-4 text-sm text-red-200 bg-red-900 rounded-lg border-l-4 border-red-500 flex items-center" role="alert">
+                <i class="fas fa-exclamation-triangle mr-3"></i>
+                <div>
+                    <?= htmlspecialchars($data['erro']) ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <form action="/home/login" method="post">
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-semibold mb-2">
                         <i class="fas fa-envelope mr-2"></i> Email:

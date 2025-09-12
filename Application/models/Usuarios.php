@@ -29,19 +29,16 @@ class Usuarios
         $result = $conn->executeQuery('DELETE FROM tb_usuarios WHERE id = :ID', array(':ID' => $id));
         return $result->rowCount();
     }
-    public static function verificarLogin($usuario, $senha)
+    public static function verificaLogin($email)
     {
         $conn = new Database();
         $result = $conn->executeQuery(
-            'SELECT * FROM tb_usuarios WHERE usuario = :USUARIO LIMIT 1',
-            array(':USUARIO' => $usuario)
+            'SELECT id, nome, email, senha, foto FROM tb_usuarios WHERE email = :EMAIL',
+            array(
+                ':EMAIL' => $email
+            )
         );
-        $user = $result->fetch(PDO::FETCH_ASSOC);
-
-        if ($user && password_verify($senha, $user['senha'])) {
-            return $user;
-        }
-        return false;
+        return $result->fetch(PDO::FETCH_OBJ);
     }
     public static function listarTudo()
     {

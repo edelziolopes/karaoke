@@ -16,11 +16,16 @@ class Usuario extends Controller
     $email = $_POST['txt_email'];
     $senha = $_POST['txt_senha'];
     $turma = $_POST['txt_turma'];
-    $foto = $_POST['txt_foto'];
+    $foto = $_FILES['txt_foto'];
 
-    $Usuarios = $this->model('Usuarios');
-    $Usuarios::salvar($nome, $email, $senha, $turma, $foto);
-    $this->redirect('usuario/index');
+    $timestamp = date('YmdHis');
+    $fotoName = $timestamp . '.jpg';
+    $uploadPath = '../public/fotos/' . $fotoName;
+    if (move_uploaded_file($foto['tmp_name'], $uploadPath)) {
+      $Usuarios = $this->model('Usuarios');
+      $Usuarios::salvar($nome, $email, $senha, $turma, $fotoName);
+      $this->redirect('usuario/index');
+    }
   } 
   
   public function cadastro()
@@ -45,31 +50,19 @@ class Usuario extends Controller
   } 
 
   
-    public function excluir($id)
-    {
-      $Usuarios = $this->model('Usuarios');
-      $Usuarios::excluir($id);
-      $this->redirect('usuario/index');
-    }  
-  public function login()
+  public function excluir($id)
   {
-    $usuario = $_POST['txt_usuario'] ?? '';
-    $senha = $_POST['txt_senha'] ?? '';
-
     $Usuarios = $this->model('Usuarios');
-    $user = $Usuarios::verificarLogin($usuario, $senha);
-
-    if ($user) {
-      setcookie('usuario', $user['nome'], time() + 3600, '/');
-      $this->redirect('home');
-    } else {
-      $this->redirect('usuario/login');
-    }
-  }
-  public function sair()
-  {
-    setcookie('usuario', '', time() - 3600, '/');
-    $this->redirect('home');
+    $Usuarios::excluir($id);
+    $this->redirect('usuario/index');
   }  
+
+  public function logout()
+  {
+      session_start();
+      session_unset();
+      session_destroy();
+      $this->redirect('/home');
+  }
 
 }

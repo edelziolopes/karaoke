@@ -24,13 +24,38 @@ class Home extends Controller
       'musicas' => $dataMusicas      
     ]);
   }
+  public function musica($id)
+  {
+    $Musicas = $this->model('Musicas');
+    $dataMusicas = $Musicas::listarMusica($id);
+
+    $this->view('/home/musica', [
+      'musica' => $dataMusicas      
+    ]);
+  }
   public function cadastro()
   {
     $this->view('/home/cadastro');
   }
   public function login()
   {
-    $this->view('/home/login');
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $email = $_POST['txt_email'];
+          $senha = $_POST['txt_senha'];
+
+          $Usuarios = $this->model('Usuarios');
+          $usuario = $Usuarios::verificaLogin($email);
+
+          if ($usuario && password_verify($senha, $usuario->senha)) {
+              session_start();
+              $_SESSION['usuario_logado'] = $usuario;
+              $this->redirect('/home');
+          } else {
+              $this->view('/home/login', ['erro' => 'Email ou senha inválidos.']);
+          }
+      } else {
+          $this->view('/home/login');
+      }
   }
 
 }
