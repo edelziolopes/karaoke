@@ -6,18 +6,19 @@ use Application\core\Database;
 use PDO;
 class Musicas
 {
-  public static function salvar($genero, $nome, $imagem, $cantor)
+  public static function salvar($genero, $nome, $imagem, $cantor, $youtube)
   {
       $conn = new Database();
       $result = $conn->executeQuery(
           'INSERT INTO tb_musicas
-          (id_genero, nome, imagem, cantor) 
-           VALUES (:GENERO, :NOME, :IMAGEM, :CANTOR)',
+          (id_genero, nome, imagem, cantor, youtube) 
+           VALUES (:GENERO, :NOME, :IMAGEM, :CANTOR, :YOUTUBE)',
           array(
             ':GENERO' => $genero,
             ':NOME' => $nome,
             ':IMAGEM' => $imagem,
-            ':CANTOR' => $cantor
+            ':CANTOR' => $cantor,
+            ':YOUTUBE' => $youtube
           )
       );
       return $result->rowCount();

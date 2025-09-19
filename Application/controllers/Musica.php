@@ -24,9 +24,10 @@ class Musica extends Controller
     $nome = $_POST['txt_nome'];
     $imagem = $_POST['txt_imagem'];
     $cantor = $_POST['txt_cantor'];
+    $youtube = $_POST['txt_youtube'];
 
     $Musicas = $this->model('Musicas');
-    $Musicas::salvar($genero, $nome, $imagem, $cantor);
+    $Musicas::salvar($genero, $nome, $imagem, $cantor, $youtube);
     $this->redirect('musica/index');
   } 
   public function excluir($id)

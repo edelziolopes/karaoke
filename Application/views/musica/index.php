@@ -27,6 +27,11 @@
         <label for="cantor" class="form-label"><i class="fas fa-user"></i> Cantor</label>
         <input type="text" class="form-control" id="cantor" name="txt_cantor" required>
     </div>
+    
+    <div class="mb-3">
+        <label for="youtube" class="form-label"><i class="fas fa-video"></i> Youtube</label>
+        <input type="text" class="form-control" id="youtube" name="txt_youtube" required>
+    </div>
 
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>
 </form>
@@ -43,6 +48,7 @@
         <th><i class="fas fa-music"></i> Música</th>
         <th><i class="fas fa-image"></i> Imagem</th>
         <th><i class="fas fa-user"></i> Cantor</th>
+        <th><i class="fas fa-user"></i> Youtube</th>
         <th><i class="fas fa-cog"></i> Ações</th>
       </tr>
     </thead>
@@ -58,6 +64,9 @@
             <?php } ?>
         </td>
         <td><?= $musica['cantor'] ?></td>
+        <td>
+        <iframe width="961" height="541" src="https://www.youtube.com/embed/<?= $musica['youtube'] ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </td>
         <td>
           <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" 
                   data-id="<?= $musica['id'] ?>" 
@@ -109,7 +118,11 @@
               <label for="edit-cantor" class="form-label">Cantor</label>
               <input type="text" class="form-control" id="edit-cantor" name="cantor" required>
           </div>
-
+          
+          <div class="mb-3">
+              <label for="edit-youtube" class="form-label">Youtube</label>
+              <input type="text" class="form-control" id="edit-youtube" name="youtube" required>
+          </div>
           <button type="submit" class="btn btn-primary">Salvar Alterações</button>
         </form>
       </div>
