@@ -47,7 +47,7 @@ class Musicas
   {
       $conn = new Database();
       $result = $conn->executeQuery(
-        'SELECT m.id AS id_musica, m.nome AS nome_musica, m.cantor, m.imagem, g.nome AS nome_genero FROM tb_musicas AS m JOIN tb_generos AS g ON m.id_genero = g.id WHERE m.id = :ID', 
+        'SELECT m.id AS id_musica, m.nome AS nome_musica, m.cantor, m.imagem, m.youtube,   g.nome AS nome_genero FROM tb_musicas AS m JOIN tb_generos AS g ON m.id_genero = g.id WHERE m.id = :ID', 
         array(':ID' => $id)
       );
       return $result->fetchAll(PDO::FETCH_ASSOC);

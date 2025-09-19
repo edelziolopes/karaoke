@@ -28,9 +28,13 @@ class Home extends Controller
   {
     $Musicas = $this->model('Musicas');
     $dataMusicas = $Musicas::listarMusica($id);
+    
+    $Comentarios = $this->model('Comentarios');
+    $dataComentarios = $Comentarios::listarTudo($id);
 
     $this->view('/home/musica', [
-      'musica' => $dataMusicas      
+      'musica' => $dataMusicas, 
+      'comentarios' => $dataComentarios
     ]);
   }
   public function cadastro()

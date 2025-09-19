@@ -65,7 +65,7 @@
         </td>
         <td><?= $musica['cantor'] ?></td>
         <td>
-        <iframe width="961" height="541" src="https://www.youtube.com/embed/<?= $musica['youtube'] ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/<?= $musica['youtube'] ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </td>
         <td>
           <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" 
