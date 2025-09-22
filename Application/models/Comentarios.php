@@ -28,7 +28,7 @@ class Comentarios
       return $result->rowCount();
   }
 
-  public static function listarTudo()
+  public static function listarTudo($musica)
   {
       $conn = new Database();
       $result = $conn->executeQuery('SELECT 
@@ -43,8 +43,10 @@ class Comentarios
             tb_comentarios AS c
         INNER JOIN 
             tb_usuarios AS u 
-        ON c.id_usuario = u.id;
-      ');
+        ON c.id_usuario = u.id
+        WHERE c.id_musica = :MUSICA
+        ORDER BY c.data DESC', 
+        array(':MUSICA' => $musica));
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 

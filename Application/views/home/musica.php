@@ -99,18 +99,25 @@
                     <div class="space-y-6">
                         
                         <?php foreach ($data['comentarios'] as $comentario): ?>
-                            <div class="flex items-start space-x-4">
-                                <img src="/fotos/<?= htmlspecialchars($comentario['foto']) ?>" alt="Foto do usuário" class="w-12 h-12 rounded-full object-cover">
-                                <div class="bg-gray-800 p-4 rounded-lg flex-grow">
-                                    <div class="flex justify-between items-center">
-                                        <p class="font-bold text-white"><?= htmlspecialchars($comentario['nome']) ?></p>
+                        <div class="flex items-start space-x-4">
+                            <img src="/fotos/<?= htmlspecialchars($comentario['foto']) ?>" alt="Foto do usuário" class="w-12 h-12 rounded-full object-cover">
+                            <div class="bg-gray-800 p-4 rounded-lg flex-grow">
+                                <div class="flex justify-between items-center">
+                                    <p class="font-bold text-white"><?= htmlspecialchars($comentario['nome']) ?></p>
+                                    
+                                    <div class="flex items-center space-x-4">
                                         <p class="text-xs text-gray-500"><?= date('d \d\e F, Y', strtotime($comentario['data'])) ?></p>
+                                        
+                                        <button class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-1 px-3 rounded-md transition-colors">
+                                            Excluir 🗑️
+                                        </button>
                                     </div>
-                                    <p class="mt-2 text-gray-300">
-                                        <?= htmlspecialchars($comentario['comentario']) ?>
-                                    </p>
                                 </div>
+                                <p class="mt-2 text-gray-300">
+                                    <?= htmlspecialchars($comentario['comentario']) ?>
+                                </p>
                             </div>
+                        </div>
                         <?php endforeach; ?>
 
                         <?php if (empty($data['comentarios'])): ?>
