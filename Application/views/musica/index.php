@@ -72,6 +72,7 @@
                   data-id="<?= $musica['id'] ?>" 
                   data-idgenero="<?= $musica['id_genero'] ?>" 
                   data-nome="<?= $musica['nome'] ?>" 
+                  data-imagem="<?= $musica['imagem'] ?>" 
                   data-cantor="<?= $musica['cantor'] ?>" 
                   data-youtube="<?= $musica['youtube'] ?>">
             <i class="fas fa-edit"></i> Editar
@@ -121,8 +122,8 @@
           </div>
 
           <div class="mb-3">
-              <label for="edit-imagem" class="form-label">Imagem (opcional)</label>
-              <input type="text" class="form-control" id="edit-imagem" name="imagem" accept="image/*">
+              <label for="edit-imagem" class="form-label">Imagem</label>
+              <input type="text" class="form-control" id="edit-imagem" name="imagem" required>
           </div>
 
           <div class="mb-3">
@@ -152,12 +153,14 @@
       var id = button.getAttribute('data-id')
       var idGenero = button.getAttribute('data-idgenero')
       var nome = button.getAttribute('data-nome')
+      var imagem = button.getAttribute('data-imagem')      
       var cantor = button.getAttribute('data-cantor')
       var youtube = button.getAttribute('data-youtube')
 
       document.getElementById('edit-id').value = id
       document.getElementById('edit-id-genero').value = idGenero
       document.getElementById('edit-nome').value = nome
+      document.getElementById('edit-imagem').value = imagem
       document.getElementById('edit-cantor').value = cantor
       document.getElementById('edit-youtube').value = youtube
     })
