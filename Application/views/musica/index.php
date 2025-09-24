@@ -72,7 +72,8 @@
                   data-id="<?= $musica['id'] ?>" 
                   data-idgenero="<?= $musica['id_genero'] ?>" 
                   data-nome="<?= $musica['nome'] ?>" 
-                  data-cantor="<?= $musica['cantor'] ?>">
+                  data-cantor="<?= $musica['cantor'] ?>" 
+                  data-youtube="<?= $musica['youtube'] ?>">
             <i class="fas fa-edit"></i> Editar
           </button>
           <a href="/musica/excluir/<?= $musica['id'] ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a>
@@ -83,6 +84,16 @@
   </table>
 </div>
 
+<style>
+  h5.modal-title {
+    font-weight: bold;
+    color: black;
+  }
+  label{
+    color: black;
+  }
+</style>
+
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -92,12 +103,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </div>
       <div class="modal-body">
-        <form action="/musica/edit" method="POST" enctype="multipart/form-data">
+        <form action="/musica/editar" method="POST" enctype="multipart/form-data">
           <input type="hidden" id="edit-id" name="id">
           
           <div class="mb-3">
               <label for="edit-id-genero" class="form-label">Gênero</label>
-              <select class="form-control" id="edit-id-genero" name="id_genero" required>
+              <select class="form-control" id="edit-id-genero" name="genero" required>
                   <?php foreach ($data['generos'] as $genero) { ?>
                       <option value="<?= $genero['id'] ?>"><?= $genero['nome'] ?></option>
                   <?php } ?>
@@ -111,7 +122,7 @@
 
           <div class="mb-3">
               <label for="edit-imagem" class="form-label">Imagem (opcional)</label>
-              <input type="file" class="form-control" id="edit-imagem" name="imagem" accept="image/*">
+              <input type="text" class="form-control" id="edit-imagem" name="imagem" accept="image/*">
           </div>
 
           <div class="mb-3">
@@ -137,14 +148,17 @@
     var editModal = document.getElementById('editModal')
     editModal.addEventListener('show.bs.modal', function (event) {
       var button = event.relatedTarget
+
       var id = button.getAttribute('data-id')
       var idGenero = button.getAttribute('data-idgenero')
       var nome = button.getAttribute('data-nome')
       var cantor = button.getAttribute('data-cantor')
+      var youtube = button.getAttribute('data-youtube')
 
       document.getElementById('edit-id').value = id
       document.getElementById('edit-id-genero').value = idGenero
       document.getElementById('edit-nome').value = nome
       document.getElementById('edit-cantor').value = cantor
+      document.getElementById('edit-youtube').value = youtube
     })
 </script>

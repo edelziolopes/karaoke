@@ -23,6 +23,28 @@ class Musicas
       );
       return $result->rowCount();
   }
+  public static function editar($id, $genero, $nome, $imagem, $cantor, $youtube)
+  {
+      $conn = new Database();
+      $result = $conn->executeQuery(
+          'UPDATE tb_musicas SET
+          id_genero = :GENERO,
+          nome = :NOME,
+          imagem = :IMAGEM,
+          cantor = :CANTOR,
+          youtube = :YOUTUBE
+          WHERE id = :ID',
+          array(
+            ':ID' => $id,
+            ':GENERO' => $genero,
+            ':NOME' => $nome,
+            ':IMAGEM' => $imagem,
+            ':CANTOR' => $cantor,
+            ':YOUTUBE' => $youtube
+          )
+      );
+      return $result->rowCount();
+  }
 
   public static function excluir($id)
   {
