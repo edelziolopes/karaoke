@@ -36,6 +36,7 @@ class Comentarios
             c.id_musica,
             c.comentario,
             c.data,
+            u.id AS id_usuario,
             u.nome,
             u.turma,
             u.foto

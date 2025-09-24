@@ -108,9 +108,12 @@
                                     <div class="flex items-center space-x-4">
                                         <p class="text-xs text-gray-500"><?= date('d \d\e F, Y', strtotime($comentario['data'])) ?></p>
                                         
+                                        <?php if ($comentario['id_usuario'] == $_SESSION['usuario_logado']->id): ?>
                                         <a href="/comentario/excluir/<?= $comentario['id'] ?>/<?= $musica['id_musica'] ?>" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-1 px-3 rounded-md transition-colors">
                                             Excluir 🗑️
                                         </a>
+                                        <?php endif; ?>
+
                                     </div>
                                 </div>
                                 <p class="mt-2 text-gray-300">
