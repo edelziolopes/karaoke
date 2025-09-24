@@ -21,11 +21,11 @@ class Comentario extends Controller
     $this->redirect('home/musica/'.$id_musica);
   } 
   
-    public function excluir($id)
+    public function excluir($id, $id_musica)
     {
       $Comentarios = $this->model('Comentarios');
       $Comentarios::excluir($id);
-      $this->redirect('comentario/index');
+      $this->redirect('home/musica/'.$id_musica);
     }  
 
 }
