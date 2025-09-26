@@ -154,7 +154,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
 </div>
 
 <script>
-    // 1. Carrega a API IFrame Player do YouTube de forma assín
+    // 1. Carrega a API IFrame Player do YouTube de forma assíncrona.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -171,12 +171,15 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
     function onYouTubeIframeAPIReady() {
         if (document.getElementById('youtube-player')) {
             player = new YT.Player('youtube-player', {
+                // ### CORREÇÃO: Adiciona a origem para evitar erros de cross-origin ###
+                playerVars: {
+                    'origin': window.location.origin
+                },
                 events: {
                     'onStateChange': onPlayerStateChange
                 }
             });
         }
-        // ### ALTERAÇÃO: Chama a nova função para configurar os listeners dos áudios ###
         setupPerformanceAudioListeners();
     }
 
@@ -265,34 +268,29 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
         }
     }
 
-    // ### ALTERAÇÃO: Nova função e lógica para sincronizar os áudios com o vídeo ###
+    // 8. Função para sincronizar os áudios de performance com o vídeo
     function setupPerformanceAudioListeners() {
         const audioElements = document.querySelectorAll('.user-performance-audio');
 
         audioElements.forEach(audio => {
-            // Quando um áudio de performance começa
             audio.addEventListener('play', () => {
-                // Pausa todos os outros áudios de performance
                 audioElements.forEach(otherAudio => {
                     if (otherAudio !== audio) {
                         otherAudio.pause();
                     }
                 });
                 
-                // Toca o vídeo do YouTube se o player estiver pronto
                 if (player && typeof player.playVideo === 'function') {
                     player.playVideo();
                 }
             });
 
-            // Quando o áudio é pausado
             audio.addEventListener('pause', () => {
                 if (player && typeof player.pauseVideo === 'function') {
                     player.pauseVideo();
                 }
             });
 
-            // Quando o áudio termina
             audio.addEventListener('ended', () => {
                 if (player && typeof player.pauseVideo === 'function') {
                     player.pauseVideo();
