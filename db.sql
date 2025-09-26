@@ -33,7 +33,7 @@ CREATE TABLE `tb_vinculos` (
   `id_usuario` int(11) NOT NULL,
   `id_musica` int(11) NOT NULL,
   `nota` int(11) NOT NULL,
-  `video` text NOT NULL,
+  `audio` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

@@ -32,9 +32,13 @@ class Home extends Controller
     $Comentarios = $this->model('Comentarios');
     $dataComentarios = $Comentarios::listarTudo($id);
 
+    $Vinculos = $this->model('Vinculos');
+    $dataVinculos = $Vinculos::listarTudo();
+
     $this->view('/home/musica', [
       'musica' => $dataMusicas, 
-      'comentarios' => $dataComentarios
+      'comentarios' => $dataComentarios,
+      'vinculos' => $dataVinculos
     ]);
   }
   public function cadastro()

@@ -2,10 +2,10 @@
 <div class="content">
 
 <h2>Cadastro de Vínculos</h2>
-<form action="/vinculo/create" method="POST">
+<form action="/vinculo/salvar" method="POST">
     <div class="mb-3">
         <label for="id_usuario" class="form-label"><i class="fas fa-user"></i> Usuário</label>
-        <select class="form-control" id="id_usuario" name="id_usuario" required>
+        <select class="form-control" id="id_usuario" name="usuario" required>
             <option value="">Selecione um usuário</option>
             <?php foreach ($data['usuarios'] as $usuario) { ?>
                 <option value="<?= $usuario['id'] ?>"><?= $usuario['nome'] ?></option>
@@ -15,7 +15,7 @@
 
     <div class="mb-3">
         <label for="id_musica" class="form-label"><i class="fas fa-music"></i> Música</label>
-        <select class="form-control" id="id_musica" name="id_musica" required>
+        <select class="form-control" id="id_musica" name="musica" required>
             <option value="">Selecione uma música</option>
             <?php foreach ($data['musicas'] as $musica) { ?>
                 <option value="<?= $musica['id'] ?>"><?= $musica['nome'] ?></option>
@@ -29,8 +29,8 @@
     </div>
 
     <div class="mb-3">
-        <label for="video" class="form-label"><i class="fas fa-video"></i> Vídeo (URL)</label>
-        <input type="url" class="form-control" id="video" name="video" placeholder="https://exemplo.com/video" required>
+        <label for="audio" class="form-label"><i class="fas fa-microphone"></i> Áudio</label>
+        <input type="text" class="form-control" id="audio" name="audio" required>
     </div>
 
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar</button>
@@ -47,7 +47,7 @@
         <th><i class="fas fa-user"></i> Usuário</th>
         <th><i class="fas fa-music"></i> Música</th>
         <th><i class="fas fa-star"></i> Nota</th>
-        <th><i class="fas fa-video"></i> Vídeo</th>
+        <th><i class="fas fa-microphone"></i> Áudio</th>
         <th><i class="fas fa-cog"></i> Ações</th>
       </tr>
     </thead>
@@ -55,12 +55,12 @@
       <?php foreach ($data['vinculos'] as $vinculo) { ?>
       <tr>
         <td><?= $vinculo['id'] ?></td>
-        <td><?= $vinculo['usuario_nome'] ?></td>
-        <td><?= $vinculo['musica_nome'] ?></td>
+        <td><?= $vinculo['nome_usuario'] ?></td>
+        <td><?= $vinculo['nome_musica'] ?></td>
         <td><?= $vinculo['nota'] ?></td>
         <td>
-            <?php if (!empty($vinculo['video'])) { ?>
-                <a href="<?= $vinculo['video'] ?>" target="_blank">Assistir</a>
+            <?php if (!empty($vinculo['audio'])) { ?>
+                <a href="<?= $vinculo['audio'] ?>" target="_blank">Assistir</a>
             <?php } ?>
         </td>
         <td>
