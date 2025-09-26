@@ -1,5 +1,5 @@
 <?php
-// Para garantir que a data seja exibida em português
+// Garante que a data seja exibida em português
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
 ?>
 <div class="bg-black text-white min-h-screen p-4 md:p-8 font-sans">
@@ -67,7 +67,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
                                                     <?= strftime('%d/%m/%Y', strtotime($vinculo['data'])) ?>
                                                 </p>
                                             </div>
-                                            <audio controls class="w-full mt-2">
+                                            <audio controls class="w-full mt-2 user-performance-audio">
                                                 <source src="/audios/<?= htmlspecialchars($vinculo['audio']) ?>" type="audio/mpeg">
                                                 Seu navegador não suporta o elemento de áudio.
                                             </audio>
@@ -160,7 +160,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // 2. Variáveis Globais para Gravação
+    // 2. Variáveis Globais
     let player;
     let mediaRecorder;
     let audioChunks = [];
@@ -176,17 +176,17 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
                 }
             });
         }
+        // ### ALTERAÇÃO: Chama a nova função para configurar os listeners dos áudios ###
+        setupPerformanceAudioListeners();
     }
 
-    // 4. Adiciona o listener de clique ao botão de gravação
+    // 4. Listener do botão de gravação
     if (recordBtn) {
         recordBtn.addEventListener('click', async () => {
             if (!mediaRecorder || mediaRecorder.state === 'inactive') {
                 // INICIAR GRAVAÇÃO
                 try {
-                    const stream = await navigator.mediaDevices.getUserMedia({
-                        audio: true
-                    });
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                     mediaRecorder = new MediaRecorder(stream);
                     mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
                     mediaRecorder.onstop = uploadAudio;
@@ -206,9 +206,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
         });
     }
 
-    // 5. Função para enviar o áudio gravado para o backend
-    // EM view/home/musica.php, DENTRO DO BLOCO <script>
-
+    // 5. Função para enviar o áudio gravado
     function uploadAudio() {
         statusEl.textContent = 'Enviando sua performance, aguarde...';
         updateUI('stopped');
@@ -223,30 +221,23 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
             body: formData
         })
         .then(response => {
-            // Verificamos se a resposta do servidor foi um sucesso (status 200-299)
             if (response.ok) {
-                // SUCESSO! O servidor processou tudo. Agora o JavaScript comanda o reload.
                 statusEl.textContent = 'Sucesso! Atualizando a página...';
-                
-                // Força o recarregamento da página para mostrar a nova performance
                 window.location.reload();
-
             } else {
-                // Se o status não for OK (ex: 400 ou 500), consideramos um erro.
                 throw new Error('O servidor respondeu com um erro.');
             }
         })
         .catch(error => {
-            // Captura erros de rede ou o erro que jogamos acima
             console.error('Falha ao enviar performance:', error);
             statusEl.textContent = 'Ocorreu um erro ao enviar. Tente novamente.';
-            updateUI('initial'); // Reabilita o botão para uma nova tentativa
+            updateUI('initial');
         });
         
         audioChunks = [];
     }
 
-    // 6. Função para parar a gravação quando o vídeo do YouTube terminar
+    // 6. Função para parar a gravação se o vídeo do YouTube terminar
     function onPlayerStateChange(event) {
         if (event.data === YT.PlayerState.ENDED && mediaRecorder && mediaRecorder.state === 'recording') {
             mediaRecorder.stop();
@@ -254,7 +245,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
         }
     }
 
-    // 7. Função auxiliar para atualizar a interface do botão e status
+    // 7. Função para atualizar a UI do botão de gravação
     function updateUI(state) {
         if (!recordBtn) return;
         if (state === 'recording') {
@@ -273,8 +264,44 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
             recordBtn.disabled = false;
         }
     }
-</script>
 
+    // ### ALTERAÇÃO: Nova função e lógica para sincronizar os áudios com o vídeo ###
+    function setupPerformanceAudioListeners() {
+        const audioElements = document.querySelectorAll('.user-performance-audio');
+
+        audioElements.forEach(audio => {
+            // Quando um áudio de performance começa
+            audio.addEventListener('play', () => {
+                // Pausa todos os outros áudios de performance
+                audioElements.forEach(otherAudio => {
+                    if (otherAudio !== audio) {
+                        otherAudio.pause();
+                    }
+                });
+                
+                // Toca o vídeo do YouTube se o player estiver pronto
+                if (player && typeof player.playVideo === 'function') {
+                    player.playVideo();
+                }
+            });
+
+            // Quando o áudio é pausado
+            audio.addEventListener('pause', () => {
+                if (player && typeof player.pauseVideo === 'function') {
+                    player.pauseVideo();
+                }
+            });
+
+            // Quando o áudio termina
+            audio.addEventListener('ended', () => {
+                if (player && typeof player.pauseVideo === 'function') {
+                    player.pauseVideo();
+                }
+            });
+        });
+    }
+
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -334,12 +361,6 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
         function callBackend(id, action) {
             console.log(`Chamando backend para o vínculo ${id} com a ação: ${action}`);
             // Aqui vai a sua implementação de fetch/AJAX para o like/dislike.
-            // Exemplo:
-            // fetch(`/vinculo/like/${id}`, { 
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ action: action })
-            // });
         }
     });
 </script>
