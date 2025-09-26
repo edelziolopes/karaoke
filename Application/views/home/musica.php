@@ -154,7 +154,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
 </div>
 
 <script>
-    // 1. Carrega a API IFrame Player do YouTube de forma assíncrona.
+    // 1. Carrega a API IFrame Player do YouTube de forma assín
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
