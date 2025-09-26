@@ -65,5 +65,63 @@ class Home extends Controller
           $this->view('/home/login');
       }
   }
+  public function cantar($id)
+  {
+      // Garante que o usuário esteja logado para acessar esta página
+      if (!isset($_SESSION['usuario_logado'])) {
+          $this->redirect('/home/login');
+          return;
+      }
+
+      $Musicas = $this->model('Musicas');
+      // Usamos listarMusica que já retorna os dados da música específica
+      $dataMusica = $Musicas::listarMusica($id);
+
+      // Se a música não for encontrada, redireciona para a home
+      if (empty($dataMusica)) {
+          $this->redirect('/home');
+          return;
+      }
+
+      // Passa os dados da música (apenas o primeiro resultado) para a view
+      $this->view('/home/cantar', ['musica' => $dataMusica[0]]);
+  }
+
+  public function salvarPerformance($id_musica)
+  {
+      // Valida se a requisição é válida
+      if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['usuario_logado']) || !isset($_FILES['audio_file']) || $_FILES['audio_file']['error'] != 0) {
+          // Se a requisição for inválida, retorna um erro "Bad Request"
+          http_response_code(400); 
+          exit;
+      }
+
+      // Processa o upload
+      $uploadDir = 'audios/';
+      if (!is_dir($uploadDir)) {
+          mkdir($uploadDir, 0777, true);
+      }
+      $fileName = uniqid() . '-' . time() . '.webm';
+      $uploadFile = $uploadDir . $fileName;
+
+      if (move_uploaded_file($_FILES['audio_file']['tmp_name'], $uploadFile)) {
+          // Se o upload do arquivo funcionou, salva no banco
+          $id_usuario = $_SESSION['usuario_logado']->id;
+          $nota = rand(50, 100);
+          $audio = $fileName;
+
+          $Vinculos = $this->model('Vinculos');
+          $Vinculos::salvar($id_usuario, $id_musica, $nota, $audio);
+
+          // Se tudo deu certo, retorna um código "OK"
+          http_response_code(200);
+          exit;
+
+      } else {
+          // Se houve uma falha ao mover o arquivo, retorna um erro de servidor
+          http_response_code(500); 
+          exit;
+      }
+  }
 
 }
