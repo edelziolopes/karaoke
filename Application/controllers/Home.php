@@ -33,7 +33,7 @@ class Home extends Controller
     $dataComentarios = $Comentarios::listarTudo($id);
 
     $Vinculos = $this->model('Vinculos');
-    $dataVinculos = $Vinculos::listarTudo();
+    $dataVinculos = $Vinculos::listarTudo($id);
 
     $this->view('/home/musica', [
       'musica' => $dataMusicas, 
@@ -41,6 +41,8 @@ class Home extends Controller
       'vinculos' => $dataVinculos
     ]);
   }
+
+
   public function cadastro()
   {
     $this->view('/home/cadastro');

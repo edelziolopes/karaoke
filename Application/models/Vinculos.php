@@ -27,7 +27,7 @@ class Vinculos
       return $result->rowCount();
   }
 
-  public static function listarTudo()
+  public static function listarTudo($id)
   {
       $conn = new Database();
       $result = $conn->executeQuery('SELECT
@@ -41,8 +41,9 @@ class Vinculos
                                     INNER JOIN
                                         tb_usuarios AS u ON v.id_usuario = u.id
                                     INNER JOIN
-                                        tb_musicas AS m ON v.id_musica = m.id;
-      ');
+                                        tb_musicas AS m ON v.id_musica = m.id
+                                    WHERE v.id_musica = :ID
+                                    ORDER BY v.id DESC', array(':ID' => $id));
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
