@@ -194,8 +194,8 @@
             </div>
 
             <div class="flex flex-col items-center">
-                <div class="w-28 h-28 bg-gray-800 rounded-full flex items-center justify-center mb-3 border-2 border-gray-700 shadow-md">
-                    <i class="fas fa-user fa-3x text-gray-500"></i>
+                <div class="w-28 h-28 bg-gray-800 rounded-full flex items-center justify-center mb-3 border-2 border-gray-700 shadow-md overflow-hidden">
+                    <img src="https://jornalvozativa.com/wp-content/uploads/2024/06/jornal-voz-ativa-ouro-preto-mg-minas-gerais-op-materia-ha-15-anos-michael-jackson-nos-deixava-relembre-10-momentos-que-marcaram-a-carreira-do-astro-do-pop-25062024164823.jpg" alt="Foto de Michael Jackson" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-medium text-white text-lg">Kauã</h3>
             </div>
