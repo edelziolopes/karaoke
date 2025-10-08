@@ -24,6 +24,13 @@ class Home extends Controller
       'musicas' => $dataMusicas      
     ]);
   }
+  public function like($id){
+    $Vinculos = $this->model('Vinculos');
+    $dataVinculos = $Vinculos::like($id);
+
+    redirect('/home/musica/'.$dataVinculos->id_musica);
+  }
+
   public function musica($id)
   {
     $Musicas = $this->model('Musicas');

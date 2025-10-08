@@ -76,9 +76,9 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
                                             </p>
                                         </div>
                                         <div class="like-interaction flex items-center justify-center space-x-4 mt-4 pt-3 border-t border-gray-700" data-vinculo-id="<?= $vinculo['id'] ?>" data-user-vote="none">
-                                            <button class="like-btn text-gray-400 hover:text-green-500 text-xl transition-colors"><i class="fas fa-thumbs-up"></i></button>
+                                            <a href="/home/like/<?= $vinculo['id'] ?>" class="like-btn text-gray-400 hover:text-green-500 text-xl transition-colors"><i class="fas fa-thumbs-up"></i></a>
                                             <span class="like-count font-bold text-lg text-white w-8 text-center"><?= $vinculo['like'] ?? 0 ?></span>
-                                            <button class="dislike-btn text-gray-400 hover:text-red-500 text-xl transition-colors"><i class="fas fa-thumbs-down"></i></button>
+                                            <a href="/home/dislike/<?= $vinculo['id'] ?>" class="dislike-btn text-gray-400 hover:text-red-500 text-xl transition-colors"><i class="fas fa-thumbs-down"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -299,66 +299,4 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
         });
     }
 
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.like-interaction').forEach(interaction => {
-            const vinculoId = interaction.dataset.vinculoId;
-            const likeBtn = interaction.querySelector('.like-btn');
-            const dislikeBtn = interaction.querySelector('.dislike-btn');
-            const countSpan = interaction.querySelector('.like-count');
-
-            likeBtn.addEventListener('click', function() {
-                let vote = interaction.dataset.userVote;
-                let count = parseInt(countSpan.textContent);
-
-                if (vote === 'liked') {
-                    countSpan.textContent = count - 1;
-                    interaction.dataset.userVote = 'none';
-                    likeBtn.classList.remove('text-green-500');
-                    callBackend(vinculoId, 'decrement');
-                } else if (vote === 'disliked') {
-                    countSpan.textContent = count + 2;
-                    interaction.dataset.userVote = 'liked';
-                    likeBtn.classList.add('text-green-500');
-                    dislikeBtn.classList.remove('text-red-500');
-                    callBackend(vinculoId, 'increment_double');
-                } else { // vote === 'none'
-                    countSpan.textContent = count + 1;
-                    interaction.dataset.userVote = 'liked';
-                    likeBtn.classList.add('text-green-500');
-                    callBackend(vinculoId, 'increment');
-                }
-            });
-
-            dislikeBtn.addEventListener('click', function() {
-                let vote = interaction.dataset.userVote;
-                let count = parseInt(countSpan.textContent);
-
-                if (vote === 'disliked') {
-                    countSpan.textContent = count + 1;
-                    interaction.dataset.userVote = 'none';
-                    dislikeBtn.classList.remove('text-red-500');
-                    callBackend(vinculoId, 'increment');
-                } else if (vote === 'liked') {
-                    countSpan.textContent = count - 2;
-                    interaction.dataset.userVote = 'disliked';
-                    dislikeBtn.classList.add('text-red-500');
-                    likeBtn.classList.remove('text-green-500');
-                    callBackend(vinculoId, 'decrement_double');
-                } else { // vote === 'none'
-                    countSpan.textContent = count - 1;
-                    interaction.dataset.userVote = 'disliked';
-                    dislikeBtn.classList.add('text-red-500');
-                    callBackend(vinculoId, 'decrement');
-                }
-            });
-        });
-
-        function callBackend(id, action) {
-            console.log(`Chamando backend para o vínculo ${id} com a ação: ${action}`);
-            // Aqui vai a sua implementação de fetch/AJAX para o like/dislike.
-        }
-    });
 </script>
