@@ -76,7 +76,7 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
                                             </p>
                                         </div>
                                         <div class="like-interaction flex items-center justify-center space-x-4 mt-4 pt-3 border-t border-gray-700" data-vinculo-id="<?= $vinculo['id'] ?>" data-user-vote="none">
-                                            <a href="/home/like/<?= $vinculo['id'] ?>" class="like-btn text-gray-400 hover:text-green-500 text-xl transition-colors"><i class="fas fa-thumbs-up"></i></a>
+                                            <a href="/home/like/<?= $musica['id_musica'] ?>/<?= $vinculo['id'] ?>" class="like-btn text-gray-400 hover:text-green-500 text-xl transition-colors"><i class="fas fa-thumbs-up"></i></a>
                                             <span class="like-count font-bold text-lg text-white w-8 text-center"><?= $vinculo['like'] ?? 0 ?></span>
                                             <a href="/home/dislike/<?= $vinculo['id'] ?>" class="dislike-btn text-gray-400 hover:text-red-500 text-xl transition-colors"><i class="fas fa-thumbs-down"></i></a>
                                         </div>

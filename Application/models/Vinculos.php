@@ -47,4 +47,19 @@ class Vinculos
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
-}
+    public static function like($id)
+    {
+        $sql = 'UPDATE tb_vinculos 
+                SET `like` = `like` + 1 
+                WHERE id = :ID';
+
+        $conn = new Database();
+        $result = $conn->executeQuery(
+            $sql,
+            array(':ID' => $id)
+        );
+        return $result->rowCount();
+    }
+} 
+
+?>
