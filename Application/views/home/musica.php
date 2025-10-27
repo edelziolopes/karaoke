@@ -71,9 +71,6 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
                                                 <source src="/audios/<?= htmlspecialchars($vinculo['audio']) ?>" type="audio/mpeg">
                                                 Seu navegador não suporta o elemento de áudio.
                                             </audio>
-                                            <p class="text-lg font-bold text-yellow-400 mt-3">
-                                                Nota: <span class="text-white"><?= htmlspecialchars($vinculo['nota']) ?> / 100</span>
-                                            </p>
                                         </div>
                                         <div class="like-interaction flex items-center justify-center space-x-4 mt-4 pt-3 border-t border-gray-700" data-vinculo-id="<?= $vinculo['id'] ?>" data-user-vote="none">
                                             <a href="/home/like/<?= $musica['id_musica'] ?>/<?= $vinculo['id'] ?>" class="like-btn text-gray-400 hover:text-green-500 text-xl transition-colors"><i class="fas fa-thumbs-up"></i></a>
