@@ -137,7 +137,7 @@
 
       <div class="flex flex-col items-center group relative">
         <div class="w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center mb-4 border-2 border-gray-700 shadow-lg overflow-hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+          <img src="/assets/img/isaac.png">
         </div>
         <h3 class="font-medium text-white text-lg">Isaac</h3>
         <span class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 bg-gray-700 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Função: Desenvolvedor Backend</span>
@@ -145,7 +145,7 @@
 
       <div class="flex flex-col items-center group relative">
         <div class="w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center mb-4 border-2 border-gray-700 shadow-lg overflow-hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+          <img src="/assets/img/pedro.png">
         </div>
         <h3 class="font-medium text-white text-lg">Pedro</h3>
         <span class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 bg-gray-700 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Função: Desenvolvedor Frontend</span>
@@ -153,23 +153,24 @@
 
       <div class="flex flex-col items-center group relative">
         <div class="w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center mb-4 border-2 border-gray-700 shadow-lg overflow-hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+          <img src="/assets/img/guilherme.png">
         </div>
         <h3 class="font-medium text-white text-lg">Guilherme</h3>
         <span class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 bg-gray-700 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Função: Gerente de Banco de Dados</span>
       </div>
 
+
       <div class="flex flex-col items-center group relative">
-        <div class="w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center mb-4 border-2 border-yellow-400 shadow-lg overflow-hidden">
-          <img src="https://jornalvozativa.com/wp-content/uploads/2024/06/jornal-voz-ativa-ouro-preto-mg-minas-gerais-op-materia-ha-15-anos-michael-jackson-nos-deixava-relembre-10-momentos-que-marcaram-a-carreira-do-astro-do-pop-25062024164823.jpg" alt="Foto de Michael Jackson" class="w-full h-full object-cover">
+        <div class="w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center mb-4 border-2 border-gray-700 shadow-lg overflow-hidden">
+          <img src="/assets/img/kaua.png">
         </div>
         <h3 class="font-medium text-white text-lg">Kauã</h3>
-        <span class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 bg-gray-700 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Função: Especialista em IA</span>
+        <span class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 bg-gray-700 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Função: Designer UX/UI</span>
       </div>
 
       <div class="flex flex-col items-center group relative">
         <div class="w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center mb-4 border-2 border-gray-700 shadow-lg overflow-hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+          <img src="/assets/img/francisco.png">
         </div>
         <h3 class="font-medium text-white text-lg">Francisco</h3>
         <span class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 bg-gray-700 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Função: Designer UX/UI</span>
@@ -177,7 +178,7 @@
 
       <div class="flex flex-col items-center group relative">
         <div class="w-32 h-32 bg-gray-800 rounded-full flex items-center justify-center mb-4 border-2 border-gray-700 shadow-lg overflow-hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+          <img src="/assets/img/helio.png">
         </div>
         <h3 class="font-medium text-white text-lg">Hélio</h3>
         <span class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 bg-gray-700 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">Função: Testador e Qualidade</span>

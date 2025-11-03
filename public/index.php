@@ -106,8 +106,10 @@
     
     <div class="relative w-full overflow-hidden">
       <div id="carousel" class="flex transition-transform duration-1000 ease-in-out">
-        <img src="/assets/img/carrossel.png" class="w-full flex-shrink-0" alt="Imagem 1">
-        <img src="/assets/img/carrossel.png" class="w-full flex-shrink-0" alt="Imagem 2">
+        <img src="/assets/img/1.png" class="w-full flex-shrink-0" alt="Imagem 1">
+        <img src="/assets/img/2.png" class="w-full flex-shrink-0" alt="Imagem 2">
+        <img src="/assets/img/3.png" class="w-full flex-shrink-0" alt="Imagem 2">
+        <img src="/assets/img/4.png" class="w-full flex-shrink-0" alt="Imagem 2">
       </div>
     </div>
 
