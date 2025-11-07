@@ -4,7 +4,7 @@
 <h2>Cadastro de Músicas</h2>
 <form action="/musica/salvar" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
-        <label for="id_genero" class="form-label"><i class="fas fa-theater-masks"></i> Gênero</label>
+        <label for="id_genero" class="form-label text-white"><i class="fas fa-theater-masks"></i> Gênero</label>
         <select class="form-control" id="id_genero" name="txt_genero" required>
             <option value="">Selecione um gênero</option>
             <?php foreach ($data['generos'] as $genero) { ?>
@@ -14,22 +14,22 @@
     </div>
 
     <div class="mb-3">
-        <label for="nome" class="form-label"><i class="fas fa-music"></i> Nome da Música</label>
+        <label for="nome" class="form-label text-white"><i class="fas fa-music"></i> Nome da Música</label>
         <input type="text" class="form-control" id="nome" name="txt_nome" required>
     </div>
 
     <div class="mb-3">
-        <label for="imagem" class="form-label"><i class="fas fa-image"></i> Imagem</label>
+        <label for="imagem" class="form-label text-white"><i class="fas fa-image"></i> Imagem</label>
         <input type="text" class="form-control" id="imagem" name="txt_imagem" accept="image/*" required>
     </div>
 
     <div class="mb-3">
-        <label for="cantor" class="form-label"><i class="fas fa-user"></i> Cantor</label>
+        <label for="cantor" class="form-label text-white"><i class="fas fa-user"></i> Cantor</label>
         <input type="text" class="form-control" id="cantor" name="txt_cantor" required>
     </div>
     
     <div class="mb-3">
-        <label for="youtube" class="form-label"><i class="fas fa-video"></i> Youtube</label>
+        <label for="youtube" class="form-label text-white"><i class="fas fa-video"></i> Youtube</label>
         <input type="text" class="form-control" id="youtube" name="txt_youtube" required>
     </div>
 
