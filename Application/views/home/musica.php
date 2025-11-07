@@ -1,5 +1,5 @@
 <?php
-// Garante que a data seja exibida em português
+
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
 ?>
 <div class="bg-black text-white min-h-screen p-4 md:p-8 font-sans">
@@ -72,11 +72,14 @@ setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt', 'portuguese');
                                                 Seu navegador não suporta o elemento de áudio.
                                             </audio>
                                         </div>
+
+                                        <?php if (isset($_SESSION['usuario_logado'])) : ?>
                                         <div class="like-interaction flex items-center justify-center space-x-4 mt-4 pt-3 border-t border-gray-700" data-vinculo-id="<?= $vinculo['id'] ?>" data-user-vote="none">
                                             <a href="/home/like/<?= $musica['id_musica'] ?>/<?= $vinculo['id'] ?>" class="like-btn text-gray-400 hover:text-green-500 text-xl transition-colors"><i class="fas fa-thumbs-up"></i></a>
                                             <span class="like-count font-bold text-lg text-white w-8 text-center"><?= $vinculo['like'] ?? 0 ?></span>
-                                            <a href="/home/dislike/<?= $vinculo['id'] ?>" class="dislike-btn text-gray-400 hover:text-red-500 text-xl transition-colors"><i class="fas fa-thumbs-down"></i></a>
+                                            <a href="/home/unlike/<?= $musica['id_musica'] ?>/<?= $vinculo['id'] ?>" class="dislike-btn text-gray-400 hover:text-red-500 text-xl transition-colors"><i class="fas fa-thumbs-down"></i></a>
                                         </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php endforeach; ?>

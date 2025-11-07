@@ -30,6 +30,12 @@ class Home extends Controller
 
     $this->redirect('/home/musica/'.$id_musica);
   }
+  public function unlike($id_musica, $id_vinculo){
+    $Vinculos = $this->model('Vinculos');
+    $dataVinculos = $Vinculos::unlike($id_vinculo);
+
+    $this->redirect('/home/musica/'.$id_musica);
+  }
 
   public function musica($id)
   {
@@ -40,7 +46,7 @@ class Home extends Controller
     $dataComentarios = $Comentarios::listarTudo($id);
 
     $Vinculos = $this->model('Vinculos');
-    $dataVinculos = $Vinculos::listarTudo($id);
+    $dataVinculos = $Vinculos::listarTudo2($id);
 
     $this->view('/home/musica', [
       'musica' => $dataMusicas, 

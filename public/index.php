@@ -123,8 +123,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home"></i> Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a></li>
-            <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             <li class="nav-item"><a class="nav-link" href="/genero"><i class="fas fa-music"></i> Gêneros</a></li>
             <li class="nav-item"><a class="nav-link" href="/musica"><i class="fas fa-headphones"></i> Músicas</a></li>
             <li class="nav-item"><a class="nav-link" href="/usuario"><i class="fas fa-users"></i> Usuários</a></li>
@@ -192,7 +190,7 @@
     });
   </script>
     <footer>
-      <div class="bg-gray-900 shadow-inner mt-8 py-6">
+      <div class="bg-gray-900 shadow-inner py-6 mt-1">
         <div class="container mx-auto px-4 text-center text-gray-400">
           <p>&copy; <?php echo date("Y"); ?> Karaokê - Terceiro Sistemas. Todos os direitos reservados.</p>
         </div>
